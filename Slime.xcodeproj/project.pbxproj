@@ -115,13 +115,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		994DF2212748FBD400BD306F /* Core */ = {
+		994DF2212748FBD400BD306F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				994DF2222748FC2900BD306F /* ImageResizer.swift */,
 				994DF2EE2749344F00BD306F /* AssetsDocument.swift */,
 			);
-			path = Core;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		994DF228274901C700BD306F /* Store */ = {
@@ -155,7 +155,7 @@
 		99BE95BD2747E68500F72A71 /* Slime */ = {
 			isa = PBXGroup;
 			children = (
-				994DF2212748FBD400BD306F /* Core */,
+				994DF2212748FBD400BD306F /* Helper */,
 				994DF228274901C700BD306F /* Store */,
 				994DF21E2748F4E000BD306F /* Model */,
 				994DF21B2748F4BC00BD306F /* View */,
@@ -203,6 +203,7 @@
 				99BE95B72747E68500F72A71 /* Sources */,
 				99BE95B82747E68500F72A71 /* Frameworks */,
 				99BE95B92747E68500F72A71 /* Resources */,
+				99556E16274AAEC60019D303 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -317,6 +318,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99556E16274AAEC60019D303 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftformat >/dev/null; then\nswiftformat .\nelse\necho \"error: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nexit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99BE95B72747E68500F72A71 /* Sources */ = {

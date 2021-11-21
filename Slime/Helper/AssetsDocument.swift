@@ -5,8 +5,8 @@
 //  Created by Mason Sun on 2021/11/20.
 //
 
-import UniformTypeIdentifiers
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct AssetsDocument: FileDocument {
     let assets: [SystemType: [Asset]]
@@ -19,11 +19,11 @@ struct AssetsDocument: FileDocument {
         self.assets = assets
     }
 
-    init(configuration: ReadConfiguration) throws {
-        self.assets = [:]
+    init(configuration _: ReadConfiguration) throws {
+        assets = [:]
     }
 
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+    func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
         var files: [String: FileWrapper] = [:]
         SystemType.allCases.forEach { systemType in
             guard let assets = assets[systemType] else { return }
@@ -43,8 +43,8 @@ struct AssetsDocument: FileDocument {
 extension NSImage {
     var pngData: Data? {
         guard let data = tiffRepresentation,
-              let imageRep = NSBitmapImageRep(data: data),
-              let pngData = imageRep.representation(using: .png, properties: [:])
+            let imageRep = NSBitmapImageRep(data: data),
+            let pngData = imageRep.representation(using: .png, properties: [:])
         else {
             return nil
         }

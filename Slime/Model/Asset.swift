@@ -5,8 +5,8 @@
 //  Created by Mason Sun on 2021/11/20.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 struct Asset: Identifiable {
     var size: CGFloat

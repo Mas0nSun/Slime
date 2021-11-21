@@ -5,8 +5,8 @@
 //  Created by Mason Sun on 2021/11/20.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 class ImageResizer {
     var imageURL: URL?
@@ -44,7 +44,7 @@ extension NSImage {
     }
 
     func resized(to newSize: NSSize) -> NSImage? {
-        guard isValid else { return nil}
+        guard isValid else { return nil }
         guard let bitmapImageRep = NSBitmapImageRep(
             bitmapDataPlanes: nil,
             pixelsWide: Int(newSize.width),
