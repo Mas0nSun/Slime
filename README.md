@@ -1,2 +1,2 @@
 # Slime
-App Icon Assets Generator
+App icon assets generator written in SwiftUI
