@@ -11,4 +11,4 @@ App icon assets generator written in SwiftUI
 
 ### App Store
 
-Search `Slime` or [click here](Pending) to view in App Store.
+Search `Slime` or [click here](https://apps.apple.com/cn/app/slime-assets-maker/id1596648022) to view in App Store.
