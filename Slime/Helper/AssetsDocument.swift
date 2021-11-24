@@ -8,38 +8,63 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+private let appIconSetFolderName = "AppIcon.appiconset"
+private let contentsJSONFileName = "Contents.json"
+
 struct AssetsDocument: FileDocument {
-    let assets: [SystemType: [Asset]]
+    private let assetContents: [AssetContent]
+    private let assets: [AssetContent.Image: NSImage]
 
     static var readableContentTypes: [UTType] {
         [.folder, .png]
     }
 
-    init(assets: [SystemType: [Asset]]) {
+    init(assetContents: [AssetContent], assets: [AssetContent.Image: NSImage]) {
+        self.assetContents = assetContents
         self.assets = assets
     }
 
     init(configuration _: ReadConfiguration) throws {
+        assetContents = []
         assets = [:]
     }
 
     func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
         var files: [String: FileWrapper] = [:]
-        SystemType.allCases.forEach { systemType in
-            guard let assets = assets[systemType] else { return }
+        assetContents.forEach { assetContent in
             var fileWrappers: [String: FileWrapper] = [:]
-            assets.forEach {
-                guard let pngData = $0.image.pngData else {
-                    return
+            let images = assetContent.content.images
+            images.forEach { image in
+                if let nsImage = assets[image],
+                   let pngData = nsImage.pngData
+                {
+                    // Add png to folder
+                    fileWrappers[image.filename] = FileWrapper(regularFileWithContents: pngData)
                 }
-                fileWrappers[$0.fileName] = FileWrapper(regularFileWithContents: pngData)
             }
-            files[systemType.rawValue] = FileWrapper(directoryWithFileWrappers: fileWrappers)
+            // Add `Contents.json` to folder
+            fileWrappers[contentsJSONFileName] = FileWrapper(regularFileWithContents: assetContent.jsonData)
+            // Wrap folder in `AppIcon.appiconset`
+            let appIconFolder = FileWrapper(
+                directoryWithFileWrappers: [
+                    appIconSetFolderName: FileWrapper(directoryWithFileWrappers: fileWrappers),
+                ]
+            )
+            // Wrap `AppIcon.appiconset` in system folder
+            files[assetContent.system.rawValue] = appIconFolder
         }
         return FileWrapper(directoryWithFileWrappers: files)
     }
+}
 
-    func generateContentsJSON() {}
+extension AssetContent {
+    var jsonData: Data {
+        do {
+            return try JSONEncoder().encode(self)
+        } catch {
+            fatalError("Can not encode AssetContent!")
+        }
+    }
 }
 
 extension NSImage {

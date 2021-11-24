@@ -36,8 +36,7 @@ struct AssetsPreviewView: View {
     }
 
     private var documents: [AssetsDocument] {
-//        [AssetsDocument(assets: assetsStore.systemTypeToAssets)]
-        []
+        [AssetsDocument(assetContents: assetsStore.assetContents, assets: assetsStore.assets)]
     }
 
     private var exportButton: some View {
