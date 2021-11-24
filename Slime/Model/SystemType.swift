@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SystemType: String, CaseIterable, Identifiable {
+enum SystemType: String, CaseIterable, Identifiable, Codable {
     case iOS
     case watchOS
     case macOS

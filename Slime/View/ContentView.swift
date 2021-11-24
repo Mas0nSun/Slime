@@ -56,37 +56,26 @@ struct ContentView: View {
             ZStack {
                 Image(systemName: "square.and.arrow.down")
                     .font(.largeTitle)
-                VStack {
+                VStack(spacing: 4) {
                     Spacer()
-                    Text("Drop icon asset here 👆\n(*1024 * 1024* preffered)")
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(4)
+                    Text("Drop icon asset here.")
+                    Text("(1024 * 1024 preffered)")
+                        .font(.subheadline.bold())
                 }
                 .padding(.bottom)
             }
             .foregroundColor(.secondary)
             .frame(width: 200, height: 200)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(
-                        .secondary,
-                        style: StrokeStyle(
-                            lineWidth: 1,
-                            lineCap: .round,
-                            lineJoin: .miter,
-                            miterLimit: 0,
-                            dash: [4],
-                            dashPhase: 0
-                        )
-                    )
-            )
+            .dashBorderStyle()
         }
     }
 
     private var generateButton: some View {
         let isDisable = assetsStore.imageURL == nil || assetsStore.systemTypes.isEmpty
         return Button("Generate") {
-            assetsStore.generateAssets()
+            Task {
+                try await assetsStore.generateAssets()
+            }
         }
         .disabled(isDisable)
         .keyboardShortcut(.defaultAction)

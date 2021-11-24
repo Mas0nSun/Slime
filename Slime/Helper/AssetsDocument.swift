@@ -38,6 +38,8 @@ struct AssetsDocument: FileDocument {
         }
         return FileWrapper(directoryWithFileWrappers: files)
     }
+
+    func generateContentsJSON() {}
 }
 
 extension NSImage {

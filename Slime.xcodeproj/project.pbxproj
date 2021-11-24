@@ -15,6 +15,9 @@
 		994DF227274900F700BD306F /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF226274900F700BD306F /* Asset.swift */; };
 		994DF22A274901EC00BD306F /* AssetsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF229274901EC00BD306F /* AssetsStore.swift */; };
 		994DF2EF2749344F00BD306F /* AssetsDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF2EE2749344F00BD306F /* AssetsDocument.swift */; };
+		99556E18274E6A0D0019D303 /* AssetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556E17274E6A0D0019D303 /* AssetContent.swift */; };
+		99556E1A274E767D0019D303 /* AssetContents.json in Resources */ = {isa = PBXBuildFile; fileRef = 99556E19274E767D0019D303 /* AssetContents.json */; };
+		99556E99274E9EA40019D303 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556E98274E9EA40019D303 /* View.swift */; };
 		99BE95BF2747E68500F72A71 /* SlimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95BE2747E68500F72A71 /* SlimeApp.swift */; };
 		99BE95C12747E68500F72A71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95C02747E68500F72A71 /* ContentView.swift */; };
 		99BE95C32747E68700F72A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99BE95C22747E68700F72A71 /* Assets.xcassets */; };
@@ -50,6 +53,9 @@
 		994DF226274900F700BD306F /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		994DF229274901EC00BD306F /* AssetsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsStore.swift; sourceTree = "<group>"; };
 		994DF2EE2749344F00BD306F /* AssetsDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsDocument.swift; sourceTree = "<group>"; };
+		99556E17274E6A0D0019D303 /* AssetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetContent.swift; sourceTree = "<group>"; };
+		99556E19274E767D0019D303 /* AssetContents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetContents.json; sourceTree = "<group>"; };
+		99556E98274E9EA40019D303 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		99BE95BB2747E68500F72A71 /* Slime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BE95BE2747E68500F72A71 /* SlimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeApp.swift; sourceTree = "<group>"; };
 		99BE95C02747E68500F72A71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				994DF2192748E5FD00BD306F /* Optional.swift */,
+				99556E98274E9EA40019D303 /* View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -111,6 +118,7 @@
 			children = (
 				994DF21F2748F4EA00BD306F /* SystemType.swift */,
 				994DF226274900F700BD306F /* Asset.swift */,
+				99556E17274E6A0D0019D303 /* AssetContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +169,7 @@
 				994DF21B2748F4BC00BD306F /* View */,
 				994DF2182748E5F200BD306F /* Extension */,
 				99BE95BE2747E68500F72A71 /* SlimeApp.swift */,
+				99556E19274E767D0019D303 /* AssetContents.json */,
 				99BE95C22747E68700F72A71 /* Assets.xcassets */,
 				99BE95C72747E68700F72A71 /* Slime.entitlements */,
 				99BE95C42747E68700F72A71 /* Preview Content */,
@@ -300,6 +309,7 @@
 			files = (
 				99BE95C62747E68700F72A71 /* Preview Assets.xcassets in Resources */,
 				99BE95C32747E68700F72A71 /* Assets.xcassets in Resources */,
+				99556E1A274E767D0019D303 /* AssetContents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +362,8 @@
 				994DF21D2748F4D100BD306F /* SystemPicker.swift in Sources */,
 				994DF2EF2749344F00BD306F /* AssetsDocument.swift in Sources */,
 				994DF2232748FC2900BD306F /* ImageResizer.swift in Sources */,
+				99556E99274E9EA40019D303 /* View.swift in Sources */,
+				99556E18274E6A0D0019D303 /* AssetContent.swift in Sources */,
 				994DF227274900F700BD306F /* Asset.swift in Sources */,
 				994DF2202748F4EA00BD306F /* SystemType.swift in Sources */,
 			);

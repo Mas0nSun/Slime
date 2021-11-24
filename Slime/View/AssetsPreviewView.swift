@@ -14,31 +14,12 @@ struct AssetsPreviewView: View {
 
     var body: some View {
         List {
-            ForEach(SystemType.allCases) { systemType in
-                if let assets = assetsStore.systemTypeToAssets[systemType] {
-                    Section {
-                        ScrollView(.horizontal) {
-                            HStack(alignment: .bottom, spacing: 32) {
-                                ForEach(assets) { asset in
-                                    makeRow(asset: asset)
-                                }
-                            }
-                            .padding()
-                        }
-                    } header: {
-                        Text(systemType.rawValue)
-                            .font(.title3)
-                    }
-                }
+            ForEach(assetsStore.systemTypes) { system in
+                makeSectionView(system: system)
             }
         }
         .toolbar {
-            Button {
-                isShowingExporter.toggle()
-            } label: {
-                Image(systemName: "square.and.arrow.up")
-            }
-            .disabled(assetsStore.systemTypeToAssets.isEmpty)
+            exportButton
         }
         .fileExporter(
             isPresented: $isShowingExporter,
@@ -55,16 +36,57 @@ struct AssetsPreviewView: View {
     }
 
     private var documents: [AssetsDocument] {
-        [AssetsDocument(assets: assetsStore.systemTypeToAssets)]
+//        [AssetsDocument(assets: assetsStore.systemTypeToAssets)]
+        []
     }
 
-    private func makeRow(asset: Asset) -> some View {
+    private var exportButton: some View {
+        Button {
+            isShowingExporter.toggle()
+        } label: {
+            Image(systemName: "square.and.arrow.up")
+        }
+        .disabled(assetsStore.assets.isEmpty)
+    }
+
+    @ViewBuilder
+    private func makeSectionView(system: SystemType) -> some View {
+        if let assetContent = assetsStore.assetContents
+            .first(where: { $0.system == system })
+        {
+            Section {
+                ScrollView(.horizontal) {
+                    HStack(alignment: .bottom, spacing: 32) {
+                        ForEach(assetContent.content.images, id: \.self) { image in
+                            makeImageItem(image: image)
+                        }
+                    }
+                    .padding()
+                }
+            } header: {
+                Text(system.rawValue)
+                    .font(.title3)
+            }
+        }
+    }
+
+    private func makeImageItem(image: AssetContent.Image) -> some View {
         VStack {
-            let size = min(asset.size, 200)
-            Image(nsImage: asset.image)
-                .resizable()
-                .frame(width: size, height: size)
-            Text(asset.name)
+            let size = min(max(max(image.sizeValue.width, image.sizeValue.height), 60), 200)
+            if let nsImage = assetsStore.assets[image] {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .frame(width: size, height: size)
+            } else {
+                Text("\(image.size)px")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .minimumScaleFactor(0.3)
+                    .frame(width: size, height: size)
+                    .dashBorderStyle(cornerRadius: size > 100 ? 8 : 4)
+            }
+            Text(image.filename)
+                .font(.subheadline)
         }
     }
 }

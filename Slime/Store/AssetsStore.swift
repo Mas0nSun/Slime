@@ -5,6 +5,7 @@
 //  Created by Mason Sun on 2021/11/20.
 //
 
+import AppKit
 import Foundation
 
 class AssetsStore: ObservableObject {
@@ -15,23 +16,35 @@ class AssetsStore: ObservableObject {
     }
 
     @Published var systemTypes: [SystemType] = []
-    @Published private(set) var systemTypeToAssets: [SystemType: [Asset]] = [:]
+    @Published private(set) var assetContents: [AssetContent] = []
+    @Published private(set) var assets: [AssetContent.Image: NSImage] = [:]
 
     private let imageResizer = ImageResizer()
 
-    func generateAssets() {
+    func loadAssetContents() async {
+        do {
+            assetContents = try await AssetContent.loadAssetContents()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
+    func generateAssets() async throws {
         imageResizer.imageURL = imageURL
-        systemTypes.forEach { systemType in
-            let assets = zip(systemType.assetSizes, imageResizer.generateImages(
-                for: systemType.assetSizes.map { CGSize(width: $0, height: $0) }
-            )).map {
-                Asset(size: $0, image: $1)
+        for systemType in systemTypes {
+            guard let assetContent = assetContents
+                .first(where: { $0.system == systemType })
+            else {
+                continue
             }
-            systemTypeToAssets[systemType] = assets
+            for image in assetContent.content.images {
+                let nsImage = try await imageResizer.generateImage(for: image.sizeValue)
+                assets[image] = nsImage
+            }
         }
     }
 
     private func cleanAssets() {
-        systemTypeToAssets = [:]
+        assets = [:]
     }
 }
