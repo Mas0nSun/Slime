@@ -71,18 +71,18 @@ struct AssetsPreviewView: View {
 
     private func makeImageItem(image: AssetContent.Image) -> some View {
         VStack {
-            let size = min(max(max(image.sizeValue.width, image.sizeValue.height), 60), 200)
+            let ptSize = min(max(max(image.ptSize.width, image.ptSize.height), 60), 200)
             if let nsImage = assetsStore.assets[image] {
                 Image(nsImage: nsImage)
                     .resizable()
-                    .frame(width: size, height: size)
+                    .frame(width: ptSize, height: ptSize)
             } else {
-                Text("\(image.size)px")
+                Text("\(image.pxSize.width.string)x\(image.pxSize.height.string)px")
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .minimumScaleFactor(0.3)
-                    .frame(width: size, height: size)
-                    .dashBorderStyle(cornerRadius: size > 100 ? 8 : 4)
+                    .frame(width: ptSize, height: ptSize)
+                    .dashBorderStyle(cornerRadius: ptSize > 100 ? 8 : 4)
             }
             Text(image.filename)
                 .font(.subheadline)

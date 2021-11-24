@@ -43,7 +43,8 @@ struct AssetsDocument: FileDocument {
                 }
             }
             // Add `Contents.json` to folder
-            fileWrappers[contentsJSONFileName] = FileWrapper(regularFileWithContents: assetContent.jsonData)
+            let contentsJSONData = assetContent.content.jsonData
+            fileWrappers[contentsJSONFileName] = FileWrapper(regularFileWithContents: contentsJSONData)
             // Wrap folder in `AppIcon.appiconset`
             let appIconFolder = FileWrapper(
                 directoryWithFileWrappers: [
@@ -54,16 +55,6 @@ struct AssetsDocument: FileDocument {
             files[assetContent.system.rawValue] = appIconFolder
         }
         return FileWrapper(directoryWithFileWrappers: files)
-    }
-}
-
-extension AssetContent {
-    var jsonData: Data {
-        do {
-            return try JSONEncoder().encode(self)
-        } catch {
-            fatalError("Can not encode AssetContent!")
-        }
     }
 }
 

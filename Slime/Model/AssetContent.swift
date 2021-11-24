@@ -16,6 +16,14 @@ extension AssetContent {
     struct Content: Codable {
         var info: Info
         var images: [Image]
+
+        var jsonData: Data {
+            do {
+                return try JSONEncoder().encode(self)
+            } catch {
+                fatalError("Can not encode AssetContent!")
+            }
+        }
     }
 
     struct Info: Codable {
@@ -28,13 +36,22 @@ extension AssetContent {
         var idiom: String
         var scale: String
         var size: String
+        var role: String?
+        var subtype: String?
 
-        var sizeValue: CGSize {
+        var ptSize: CGSize {
             let widthAndHeight = size.split(separator: "x")
                 .compactMap { CGFloat(Double($0) ?? 0) }
             return CGSize(
                 width: widthAndHeight.first!,
                 height: widthAndHeight.last!
+            )
+        }
+
+        var pxSize: CGSize {
+            CGSize(
+                width: ptSize.width * CGFloat(scaleValue),
+                height: ptSize.height * CGFloat(scaleValue)
             )
         }
 

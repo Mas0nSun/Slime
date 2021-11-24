@@ -38,7 +38,7 @@ class AssetsStore: ObservableObject {
                 continue
             }
             for image in assetContent.content.images {
-                let nsImage = try await imageResizer.generateImage(for: image.sizeValue)
+                let nsImage = try await imageResizer.generateImage(for: image.pxSize)
                 assets[image] = nsImage
             }
         }
