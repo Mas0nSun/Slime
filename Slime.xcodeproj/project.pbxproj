@@ -19,6 +19,8 @@
 		99556E1A274E767D0019D303 /* AssetContents.json in Resources */ = {isa = PBXBuildFile; fileRef = 99556E19274E767D0019D303 /* AssetContents.json */; };
 		99556E99274E9EA40019D303 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556E98274E9EA40019D303 /* View.swift */; };
 		99556E9D274EABD60019D303 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556E9C274EABD60019D303 /* CGFloat.swift */; };
+		99556EA1274FC33A0019D303 /* AssetImageGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556EA0274FC33A0019D303 /* AssetImageGroupView.swift */; };
+		99556EA3274FCB0B0019D303 /* AssetImageGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556EA2274FCB0B0019D303 /* AssetImageGroup.swift */; };
 		99BE95BF2747E68500F72A71 /* SlimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95BE2747E68500F72A71 /* SlimeApp.swift */; };
 		99BE95C12747E68500F72A71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95C02747E68500F72A71 /* ContentView.swift */; };
 		99BE95C32747E68700F72A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99BE95C22747E68700F72A71 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		99556E19274E767D0019D303 /* AssetContents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetContents.json; sourceTree = "<group>"; };
 		99556E98274E9EA40019D303 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		99556E9C274EABD60019D303 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		99556EA0274FC33A0019D303 /* AssetImageGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImageGroupView.swift; sourceTree = "<group>"; };
+		99556EA2274FCB0B0019D303 /* AssetImageGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImageGroup.swift; sourceTree = "<group>"; };
 		99BE95BB2747E68500F72A71 /* Slime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BE95BE2747E68500F72A71 /* SlimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeApp.swift; sourceTree = "<group>"; };
 		99BE95C02747E68500F72A71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 				99BE95C02747E68500F72A71 /* ContentView.swift */,
 				994DF21C2748F4D100BD306F /* SystemPicker.swift */,
 				994DF224274900DB00BD306F /* AssetsPreviewView.swift */,
+				99556EA0274FC33A0019D303 /* AssetImageGroupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 				994DF21F2748F4EA00BD306F /* SystemType.swift */,
 				994DF226274900F700BD306F /* Asset.swift */,
 				99556E17274E6A0D0019D303 /* AssetContent.swift */,
+				99556EA2274FCB0B0019D303 /* AssetImageGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +228,8 @@
 			dependencies = (
 			);
 			name = Slime;
+			packageProductDependencies = (
+			);
 			productName = Slime;
 			productReference = 99BE95BB2747E68500F72A71 /* Slime.app */;
 			productType = "com.apple.product-type.application";
@@ -294,6 +302,8 @@
 				Base,
 			);
 			mainGroup = 99BE95B22747E68500F72A71;
+			packageReferences = (
+			);
 			productRefGroup = 99BE95BC2747E68500F72A71 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -364,6 +374,8 @@
 				994DF21A2748E5FD00BD306F /* Optional.swift in Sources */,
 				994DF21D2748F4D100BD306F /* SystemPicker.swift in Sources */,
 				994DF2EF2749344F00BD306F /* AssetsDocument.swift in Sources */,
+				99556EA1274FC33A0019D303 /* AssetImageGroupView.swift in Sources */,
+				99556EA3274FCB0B0019D303 /* AssetImageGroup.swift in Sources */,
 				994DF2232748FC2900BD306F /* ImageResizer.swift in Sources */,
 				99556E99274E9EA40019D303 /* View.swift in Sources */,
 				99556E9D274EABD60019D303 /* CGFloat.swift in Sources */,

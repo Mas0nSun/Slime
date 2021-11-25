@@ -54,19 +54,29 @@ struct AssetsPreviewView: View {
             .first(where: { $0.system == system })
         {
             Section {
-                ScrollView(.horizontal) {
-                    HStack(alignment: .bottom, spacing: 32) {
-                        ForEach(assetContent.content.images, id: \.self) { image in
-                            makeImageItem(image: image)
-                        }
+                LazyVGrid(columns: [.init(.flexible()), .init(.flexible())]) {
+                    ForEach(groupAssetsImages(assetContent.content.images), id: \.self) { group in
+                        AssetImageGroupView(group: group)
+                            .environmentObject(assetsStore)
+                            .padding()
+                            .frame(maxHeight: .infinity, alignment: .bottom)
                     }
-                    .padding()
                 }
             } header: {
                 Text(system.rawValue)
                     .font(.title3)
             }
         }
+    }
+
+    private func groupAssetsImages(_ images: [AssetContent.Image]) -> [AssetImageGroup] {
+        Dictionary(grouping: images) { $0.size + $0.idiom }
+            .values
+            .compactMap { images -> AssetImageGroup? in
+                guard let ptSize = images.first?.ptSize else { return nil }
+                return AssetImageGroup(ptSize: ptSize, images: images)
+            }
+            .sorted { $0.ptSize.width < $1.ptSize.width }
     }
 
     private func makeImageItem(image: AssetContent.Image) -> some View {

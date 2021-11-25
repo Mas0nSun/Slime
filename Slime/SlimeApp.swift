@@ -17,6 +17,7 @@ struct SlimeApp: App {
                 ContentView()
                     .environmentObject(assetsStore)
                 AssetsPreviewView()
+                    .frame(minWidth: 300)
                     .environmentObject(assetsStore)
             }
             .task {
