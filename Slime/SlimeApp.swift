@@ -19,6 +19,9 @@ struct SlimeApp: App {
                 AssetsPreviewView()
                     .environmentObject(assetsStore)
             }
+            .task {
+                await assetsStore.loadAssetContents()
+            }
         }
     }
 }
