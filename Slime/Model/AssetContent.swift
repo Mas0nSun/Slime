@@ -50,14 +50,14 @@ extension AssetContent {
 
         var pxSize: CGSize {
             CGSize(
-                width: ptSize.width * CGFloat(scaleValue),
-                height: ptSize.height * CGFloat(scaleValue)
+                width: ptSize.width * scaleValue,
+                height: ptSize.height * scaleValue
             )
         }
 
-        var scaleValue: Int {
+        var scaleValue: CGFloat {
             scale.split(separator: "x")
-                .compactMap { Int($0) }
+                .compactMap { CGFloat(Double($0) ?? 1) }
                 .first!
         }
     }

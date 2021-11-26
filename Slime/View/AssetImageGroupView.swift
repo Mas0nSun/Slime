@@ -14,7 +14,7 @@ struct AssetImageGroupView: View {
 
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .bottom) {
                 ForEach(group.images, id: \.self) { image in
                     imageView(image)
                 }
@@ -29,20 +29,29 @@ struct AssetImageGroupView: View {
         }
     }
 
-    @ViewBuilder
     private func imageView(_ image: AssetContent.Image) -> some View {
-        let ptSize = min(max(max(image.ptSize.width, image.ptSize.height), 60), 200)
-        if let nsImage = assetsStore.assets[image] {
-            Image(nsImage: nsImage)
-                .resizable()
-                .frame(width: ptSize, height: ptSize)
-        } else {
-            Text("\(image.pxSize.width.string)x\(image.pxSize.height.string)px")
-                .font(.footnote)
+        let minSize: CGFloat = 60
+        let maxSize: CGFloat = 200
+        let previewScale: CGFloat = 0.7
+        let pxSize = max(image.pxSize.width * previewScale, image.pxSize.height * previewScale)
+        let previewSize = min(max(minSize, pxSize), maxSize)
+        return VStack {
+            if let nsImage = assetsStore.assets[image] {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .frame(width: min(pxSize, maxSize), height: min(pxSize, maxSize))
+                    .frame(width: previewSize, height: previewSize, alignment: .bottom)
+            } else {
+                Text("\(image.pxSize.width.string)x\(image.pxSize.height.string)px")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .frame(width: previewSize, height: previewSize)
+                    .dashBorderStyle(cornerRadius: pxSize > 100 ? 8 : 4)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+            }
+            Text(image.scale)
+                .font(.subheadline)
                 .foregroundColor(.secondary)
-                .minimumScaleFactor(0.3)
-                .frame(width: ptSize, height: ptSize)
-                .dashBorderStyle(cornerRadius: ptSize > 100 ? 8 : 4)
         }
     }
 }

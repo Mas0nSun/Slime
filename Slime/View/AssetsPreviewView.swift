@@ -76,27 +76,13 @@ struct AssetsPreviewView: View {
                 guard let ptSize = images.first?.ptSize else { return nil }
                 return AssetImageGroup(ptSize: ptSize, images: images)
             }
-            .sorted { $0.ptSize.width < $1.ptSize.width }
-    }
-
-    private func makeImageItem(image: AssetContent.Image) -> some View {
-        VStack {
-            let ptSize = min(max(max(image.ptSize.width, image.ptSize.height), 60), 200)
-            if let nsImage = assetsStore.assets[image] {
-                Image(nsImage: nsImage)
-                    .resizable()
-                    .frame(width: ptSize, height: ptSize)
-            } else {
-                Text("\(image.pxSize.width.string)x\(image.pxSize.height.string)px")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .minimumScaleFactor(0.3)
-                    .frame(width: ptSize, height: ptSize)
-                    .dashBorderStyle(cornerRadius: ptSize > 100 ? 8 : 4)
+            .sorted {
+                if $0.ptSize.width != $1.ptSize.width {
+                    return $0.ptSize.width < $1.ptSize.width
+                } else {
+                    return ($0.images.first?.idiom ?? "") > ($1.images.first?.idiom ?? "")
+                }
             }
-            Text(image.filename)
-                .font(.subheadline)
-        }
     }
 }
 
