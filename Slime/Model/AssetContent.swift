@@ -60,6 +60,35 @@ extension AssetContent {
                 .compactMap { CGFloat(Double($0) ?? 1) }
                 .first!
         }
+
+        var idiomName: String {
+            switch idiom.lowercased() {
+            case "iphone":
+                return "iPhone"
+            case "ipad":
+                return "iPad"
+            case "watch":
+                return "iWatch"
+            case "mac":
+                return "iMac"
+            default:
+                return ""
+            }
+        }
+
+        var idiomRole: String {
+            if size == "20x20" {
+                return "Notification"
+            } else if size == "29x29" {
+                return "Settings"
+            } else if size == "40x40" {
+                return "Spotlight"
+            } else if size == "1024x1024" {
+                return "App Store"
+            } else {
+                return "App"
+            }
+        }
     }
 }
 

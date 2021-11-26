@@ -21,7 +21,7 @@ struct AssetImageGroupView: View {
             }
             if let image = group.images.first {
                 VStack {
-                    Text(image.idiom)
+                    Text("\(image.idiomName) \(image.idiomRole)")
                     Text(image.ptSize.width.string + "pt")
                 }
                 .font(.subheadline)

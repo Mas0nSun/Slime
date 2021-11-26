@@ -54,12 +54,13 @@ struct AssetsPreviewView: View {
             .first(where: { $0.system == system })
         {
             Section {
-                LazyVGrid(columns: [.init(.flexible()), .init(.flexible())]) {
+                let colunms = Array(repeating: GridItem(.flexible(), alignment: .bottom), count: 2)
+                LazyVGrid(columns: colunms) {
                     ForEach(groupAssetsImages(assetContent.content.images), id: \.self) { group in
                         AssetImageGroupView(group: group)
                             .environmentObject(assetsStore)
-                            .padding()
                             .frame(maxHeight: .infinity, alignment: .bottom)
+                            .padding()
                     }
                 }
             } header: {
