@@ -42,7 +42,7 @@ struct AssetsPreviewView: View {
                     assetsStore.systemTypes.contains($0.system)
                 },
                 assets: assetsStore.assets
-            )
+            ),
         ]
     }
 
