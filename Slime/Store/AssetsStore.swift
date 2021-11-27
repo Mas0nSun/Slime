@@ -16,6 +16,7 @@ class AssetsStore: ObservableObject {
     }
 
     @Published var systemTypes: [SystemType] = []
+    @Published var hasAlpha: Bool = true
     @Published private(set) var assetContents: [AssetContent] = []
     @Published private(set) var assets: [AssetContent.Image: NSImage] = [:]
 
@@ -38,7 +39,10 @@ class AssetsStore: ObservableObject {
                 continue
             }
             for image in assetContent.content.images {
-                let nsImage = try await imageResizer.generateImage(for: image.pxSize)
+                let nsImage = try await imageResizer.generateImage(
+                    for: image.pxSize,
+                    hasAlpha: hasAlpha
+                )
                 assets[image] = nsImage
             }
         }
