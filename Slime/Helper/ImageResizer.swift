@@ -76,7 +76,7 @@ extension NSImage {
             NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapImageRep)
             let rect = NSRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
             if !hasAlpha {
-                NSColor.red.drawSwatch(in: rect)
+                NSColor.white.drawSwatch(in: rect)
                 rect.fill()
             }
             draw(in: rect)

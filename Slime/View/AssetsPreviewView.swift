@@ -36,7 +36,14 @@ struct AssetsPreviewView: View {
     }
 
     private var documents: [AssetsDocument] {
-        [AssetsDocument(assetContents: assetsStore.assetContents, assets: assetsStore.assets)]
+        [
+            AssetsDocument(
+                assetContents: assetsStore.assetContents.filter {
+                    assetsStore.systemTypes.contains($0.system)
+                },
+                assets: assetsStore.assets
+            )
+        ]
     }
 
     private var exportButton: some View {
