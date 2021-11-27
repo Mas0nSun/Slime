@@ -23,11 +23,11 @@ class ImageResizer {
         return images
     }
 
-    func generateImage(for size: CGSize) async throws -> NSImage {
+    func generateImage(for size: CGSize, hasAlpha: Bool) async throws -> NSImage {
         guard let imageURL = imageURL, let image = NSImage(contentsOf: imageURL) else {
             fatalError("Image does not exist!")
         }
-        return try await image.resized(to: size)
+        return try await image.resized(to: size, hasAlpha: hasAlpha)
     }
 }
 
@@ -52,7 +52,7 @@ extension NSImage {
         }
     }
 
-    func resized(to newSize: NSSize) async throws -> NSImage {
+    func resized(to newSize: NSSize, hasAlpha: Bool = true) async throws -> NSImage {
         try await withCheckedThrowingContinuation { continuation in
             guard isValid else {
                 fatalError("Image is not valid!")
@@ -74,13 +74,12 @@ extension NSImage {
             bitmapImageRep.size = newSize
             NSGraphicsContext.saveGraphicsState()
             NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapImageRep)
-
-            draw(
-                in: NSRect(x: 0, y: 0, width: newSize.width, height: newSize.height),
-                from: NSZeroRect,
-                operation: .copy,
-                fraction: 1.0
-            )
+            let rect = NSRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+            if !hasAlpha {
+                NSColor.white.drawSwatch(in: rect)
+                rect.fill()
+            }
+            draw(in: rect)
             NSGraphicsContext.restoreGraphicsState()
             let newImage = NSImage(size: newSize)
             newImage.addRepresentation(bitmapImageRep)

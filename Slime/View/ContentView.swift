@@ -15,7 +15,10 @@ struct ContentView: View {
         VStack(alignment: .center, spacing: 16) {
             previewView
             SystemPicker(selections: $assetsStore.systemTypes)
-            generateButton
+            HStack {
+                alphaToggle
+                generateButton
+            }
         }
         .padding()
         .onDrop(of: ["public.file-url"], isTargeted: $isTargeted) { providers, _ in
@@ -68,6 +71,10 @@ struct ContentView: View {
             .frame(width: 200, height: 200)
             .dashBorderStyle()
         }
+    }
+
+    private var alphaToggle: some View {
+        Toggle("Alpha", isOn: $assetsStore.hasAlpha)
     }
 
     private var generateButton: some View {
