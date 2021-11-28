@@ -32,26 +32,6 @@ class ImageResizer {
 }
 
 extension NSImage {
-    func resizedV1(to size: CGSize) -> NSImage? {
-        let result = NSImage(size: size)
-        result.lockFocus()
-        defer {
-            result.unlockFocus()
-        }
-        if let context = NSGraphicsContext.current {
-            context.imageInterpolation = .high
-            draw(
-                in: NSRect(origin: .zero, size: size),
-                from: NSRect(origin: .zero, size: self.size),
-                operation: .copy,
-                fraction: 1
-            )
-            return result
-        } else {
-            return nil
-        }
-    }
-
     func resized(to newSize: NSSize, hasAlpha: Bool = true) async throws -> NSImage {
         try await withCheckedThrowingContinuation { continuation in
             guard isValid else {
