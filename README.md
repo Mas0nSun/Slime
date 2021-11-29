@@ -27,4 +27,4 @@ macOS 12.0 minimum
 Contributions are welcomed and encouraged
 
 ### App Store
-Search `Slime` or [click here](https://apps.apple.com/cn/app/slime-assets-maker/id1596648022) to view in App Store.
+Search `Slime` or [click here](https://apps.apple.com/cn/app/id1596648022)
