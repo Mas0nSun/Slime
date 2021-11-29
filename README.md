@@ -5,6 +5,7 @@
 ![Preview](https://user-images.githubusercontent.com/20198012/143677189-c13cc444-5e2c-4342-9e22-27a7bff64915.png)
 
 ### Requirement
+
 macOS 12.0 minimum
 
 ### Features
@@ -17,6 +18,10 @@ macOS 12.0 minimum
 - [x] watchOS
 - [x] macOS
 - [ ] pending
+
+### How to Use
+
+![Tutorial](https://user-images.githubusercontent.com/20198012/143879265-7a485500-74c6-4272-aea5-49a22a15430b.gif)
 
 ### Contribution
 Contributions are welcomed and encouraged
