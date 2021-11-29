@@ -4,10 +4,13 @@
 
 ![Preview](https://user-images.githubusercontent.com/20198012/143677189-c13cc444-5e2c-4342-9e22-27a7bff64915.png)
 
+### Requirement
+macOS 12.0 minimum
+
 ### Features
-- [x] support export AppIcon.appiconset (Just drop the folder into xcode)
-- [x] support preview assets before export
-- [x] support export assets without alpha channel
+- [x] Export AppIcon.appiconset (Just drop the folder into xcode)
+- [x] Preview assets before export
+- [x] Export assets without alpha channel
 
 ### OS Supported
 - [x] iOS
