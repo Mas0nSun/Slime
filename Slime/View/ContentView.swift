@@ -67,7 +67,7 @@ struct ContentView: View {
                 VStack(spacing: 4) {
                     Spacer()
                     Text("Drop icon asset here.")
-                    Text("(1024 * 1024 preffered)")
+                    Text("(1024 * 1024 preferred)")
                         .font(.subheadline.bold())
                 }
                 .padding(.bottom)
