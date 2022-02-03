@@ -12,7 +12,7 @@ extension View {
         overlay(
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(
-                    .secondary,
+                    Color.secondary,
                     style: StrokeStyle(
                         lineWidth: 1,
                         lineCap: .round,

@@ -13,16 +13,22 @@ struct SlimeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HStack(spacing: 0) {
-                ContentView()
-                    .environmentObject(assetsStore)
-                AssetsPreviewView()
-                    .frame(minWidth: 500)
-                    .environmentObject(assetsStore)
-            }
-            .task {
-                await assetsStore.loadAssetContents()
-            }
+            content
+                .onAppear {
+                    Task {
+                        await assetsStore.loadAssetContents()
+                    }
+                }
+        }
+    }
+
+    private var content: some View {
+        HStack(spacing: 0) {
+            ContentView()
+                .environmentObject(assetsStore)
+            AssetsPreviewView()
+                .frame(minWidth: 500)
+                .environmentObject(assetsStore)
         }
     }
 }
