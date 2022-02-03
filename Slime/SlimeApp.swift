@@ -13,19 +13,12 @@ struct SlimeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if #available(macOS 12.0, *) {
-                content.task {
-                    await assetsStore.loadAssetContents()
-                }
-            } else {
-                // Fallback on earlier versions
-                content
-                    .onAppear {
-                        Task {
-                            await assetsStore.loadAssetContents()
-                        }
+            content
+                .onAppear {
+                    Task {
+                        await assetsStore.loadAssetContents()
                     }
-            }
+                }
         }
     }
 
