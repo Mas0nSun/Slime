@@ -6,7 +6,7 @@
 
 ### Requirement
 
-macOS 12.0 minimum
+macOS 11.0 minimum
 
 ### Features
 - [x] Export AppIcon.appiconset (Just drop the folder into xcode)

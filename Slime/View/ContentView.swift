@@ -48,13 +48,18 @@ struct ContentView: View {
     @ViewBuilder
     private var previewView: some View {
         if let imageURL = assetsStore.imageURL {
-            AsyncImage(url: imageURL) { image in
-                image.resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
+            if #available(macOS 12.0, *) {
+                AsyncImage(url: imageURL) { image in
+                    image.resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 200, height: 200)
+            } else {
+                Image(nsImage: NSImage(contentsOf: imageURL)!)
+                    .frame(width: 200, height: 200)
             }
-            .frame(width: 200, height: 200)
         } else {
             ZStack {
                 Image(systemName: "square.and.arrow.down")
@@ -62,7 +67,7 @@ struct ContentView: View {
                 VStack(spacing: 4) {
                     Spacer()
                     Text("Drop icon asset here.")
-                    Text("(1024 * 1024 preffered)")
+                    Text("(1024 * 1024 preferred)")
                         .font(.subheadline.bold())
                 }
                 .padding(.bottom)
