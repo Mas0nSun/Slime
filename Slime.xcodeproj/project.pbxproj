@@ -108,16 +108,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		994DF2182748E5F200BD306F /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				994DF2192748E5FD00BD306F /* Optional.swift */,
-				99556E98274E9EA40019D303 /* View.swift */,
-				99556E9C274EABD60019D303 /* CGFloat.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		994DF21B2748F4BC00BD306F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,22 +130,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		994DF2212748FBD400BD306F /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				994DF2222748FC2900BD306F /* ImageResizer.swift */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
-		994DF228274901C700BD306F /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				994DF229274901EC00BD306F /* AssetsStore.swift */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
 		998FDF5A296865150001783C /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +143,11 @@
 		998FDF5D2968666A0001783C /* AssetsMake */ = {
 			isa = PBXGroup;
 			children = (
+				99556E19274E767D0019D303 /* AssetContents.json */,
+				994DF21E2748F4E000BD306F /* Model */,
+				994DF21B2748F4BC00BD306F /* View */,
+				994DF2222748FC2900BD306F /* ImageResizer.swift */,
+				994DF229274901EC00BD306F /* AssetsStore.swift */,
 				998FDF63296884A40001783C /* AssetsMakeView.swift */,
 			);
 			path = AssetsMake;
@@ -185,9 +164,28 @@
 		998FDF5F296867420001783C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				998FDF60296869A90001783C /* NSImage.swift */,
+				998FDF6A296889170001783C /* Extension */,
+				998FDF692968890E0001783C /* Style */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		998FDF692968890E0001783C /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				99556E98274E9EA40019D303 /* View.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		998FDF6A296889170001783C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				994DF2192748E5FD00BD306F /* Optional.swift */,
+				99556E9C274EABD60019D303 /* CGFloat.swift */,
+				998FDF60296869A90001783C /* NSImage.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		99BE95B22747E68500F72A71 = {
@@ -215,14 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				998FDF5A296865150001783C /* Module */,
-				994DF2212748FBD400BD306F /* Helper */,
-				994DF228274901C700BD306F /* Store */,
-				994DF21E2748F4E000BD306F /* Model */,
-				994DF21B2748F4BC00BD306F /* View */,
-				994DF2182748E5F200BD306F /* Extension */,
 				99BE95BE2747E68500F72A71 /* SlimeApp.swift */,
 				998FDF67296887320001783C /* AppDelegate.swift */,
-				99556E19274E767D0019D303 /* AssetContents.json */,
 				99BE95C22747E68700F72A71 /* Assets.xcassets */,
 				99BE95C72747E68700F72A71 /* Slime.entitlements */,
 				99BE95C42747E68700F72A71 /* Preview Content */,
