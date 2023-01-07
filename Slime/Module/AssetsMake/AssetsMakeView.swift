@@ -9,7 +9,16 @@ import SwiftUI
 
 struct AssetsMakeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 0) {
+            ContentView()
+            AssetsPreviewView()
+                .frame(minWidth: 500)
+        }
+        .onAppear {
+            Task {
+                await AssetsStore.shared.loadAssetContents()
+            }
+        }
     }
 }
 

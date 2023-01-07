@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override init() {
         super.init()
         _ = AssetsStore.shared
+        _ = AlphaRemover.shared
     }
 
     func applicationDidFinishLaunching(_: Notification) {
@@ -89,19 +90,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func contentView(module: Module) -> some View {
         switch module {
         case .assetsMake:
-            HStack(spacing: 0) {
-                ContentView()
-                AssetsPreviewView()
-                    .frame(minWidth: 500)
-            }
-            .environmentObject(AssetsStore.shared)
-            .onAppear {
-                Task {
-                    await AssetsStore.shared.loadAssetContents()
-                }
-            }
+            AssetsMakeView()
+                .environmentObject(AssetsStore.shared)
         case .alphaRemove:
-            Text("No Alpha")
+            AlphaRemoveView()
+                .environmentObject(AlphaRemover.shared)
         }
     }
 }
