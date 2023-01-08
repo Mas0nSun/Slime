@@ -8,6 +8,7 @@
 import AppKit
 import Foundation
 
+@MainActor
 class AssetsStore: ObservableObject {
     static let shared = AssetsStore()
     @Published var imageURL: URL? {
@@ -28,9 +29,7 @@ class AssetsStore: ObservableObject {
     func loadAssetContents() async {
         do {
             let assetContents = try await AssetContent.loadAssetContents()
-            await MainActor.run {
-                self.assetContents = assetContents
-            }
+            self.assetContents = assetContents
         } catch {
             fatalError(error.localizedDescription)
         }

@@ -42,14 +42,19 @@ struct AlphaRemoveView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+            VStack {
                 ForEach(alphaRemover.imageURLs, id: \.self) { url in
-                    VStack {
+                    HStack {
                         Text(url.lastPathComponent)
                         if let imageResult = alphaRemover.images[url] {
                             switch imageResult {
                             case let .success(image):
+                                Image(nsImage: image)
+                                    .resizable()
+                                    .frame(width: 40, height: 80)
                                 Text("\(image.size.width)")
+                                Text("\(image.hasAlpha == true ? "true" : "false")")
+                                    .foregroundColor(image.hasAlpha ? .red : .green)
                             case .failure:
                                 Text("Failed")
                             }
@@ -61,7 +66,7 @@ struct AlphaRemoveView: View {
                 }
             }
         }
-        .frame(width: 200, height: 200)
+        .frame(width: 400, height: 200)
     }
 }
 

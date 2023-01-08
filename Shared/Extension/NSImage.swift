@@ -48,7 +48,15 @@ extension NSImage {
         result.lockFocus()
         let rect = NSRect(origin: .zero, size: size)
         NSColor.white.drawSwatch(in: rect)
+        rect.fill()
+        draw(in: rect)
         result.unlockFocus()
         return result
+    }
+
+    var hasAlpha: Bool {
+        representations.contains {
+            $0.hasAlpha == true
+        }
     }
 }
