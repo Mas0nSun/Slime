@@ -9,21 +9,17 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct AssetsPreviewView: View {
-    @EnvironmentObject private var assetsStore: AssetsStore
-    @State private var isShowingExporter: Bool = false
+    @EnvironmentObject private var assetsMaker: AssetsMaker
 
     var body: some View {
         List {
-            ForEach(assetsStore.systemTypes) { system in
+            ForEach(assetsMaker.systemTypes) { system in
                 makeSectionView(system: system)
             }
         }
-        .toolbar {
-            exportButton
-        }
         .fileExporter(
-            isPresented: $isShowingExporter,
-            documents: documents,
+            isPresented: $assetsMaker.isShowingExporter,
+            documents: assetsMaker.documents,
             contentType: .folder
         ) { result in
             switch result {
@@ -35,37 +31,17 @@ struct AssetsPreviewView: View {
         }
     }
 
-    private var documents: [AssetsDocument] {
-        [
-            AssetsDocument(
-                assetContents: assetsStore.assetContents.filter {
-                    assetsStore.systemTypes.contains($0.system)
-                },
-                assets: assetsStore.assets
-            ),
-        ]
-    }
-
-    private var exportButton: some View {
-        Button {
-            isShowingExporter.toggle()
-        } label: {
-            Image(systemName: "square.and.arrow.up")
-        }
-        .disabled(assetsStore.assets.isEmpty)
-    }
-
     @ViewBuilder
     private func makeSectionView(system: SystemType) -> some View {
-        if let assetContent = assetsStore.assetContents
+        if let assetContent = assetsMaker.assetContents
             .first(where: { $0.system == system })
         {
             Section {
-                let colunms = Array(repeating: GridItem(.flexible(), alignment: .bottom), count: 2)
-                LazyVGrid(columns: colunms) {
+                let columns = Array(repeating: GridItem(.flexible(), alignment: .bottom), count: 2)
+                LazyVGrid(columns: columns) {
                     ForEach(groupAssetsImages(assetContent.content.images), id: \.self) { group in
                         AssetImageGroupView(group: group)
-                            .environmentObject(assetsStore)
+                            .environmentObject(assetsMaker)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                             .padding()
                     }

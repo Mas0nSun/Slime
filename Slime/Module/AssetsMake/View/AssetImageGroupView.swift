@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AssetImageGroupView: View {
-    @EnvironmentObject private var assetsStore: AssetsStore
+    @EnvironmentObject private var assetsStore: AssetsMaker
 
     var group: AssetImageGroup
 
