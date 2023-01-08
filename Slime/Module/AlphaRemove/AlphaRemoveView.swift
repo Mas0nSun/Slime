@@ -12,34 +12,47 @@ struct AlphaRemoveView: View {
     @State private var isTargeted = false
 
     var body: some View {
-        // TODO: change to 13.0
-        if #available(macOS 13.0, *) {
-            contentView
-                .dropDestination(for: URL.self) { items, location in
-                    Task {
-                        await alphaRemover.processImages(for: items)
-                    }
-                    return true
-                }
-        } else {
-            contentView
-                .onDrop(of: [.dropURLType], isTargeted: $isTargeted) { providers, _ in
-                    Task {
-                        do {
-                            try await alphaRemover.processImages(for: providers)
-                        } catch {
-                            print(error)
+        Group {
+            if #available(macOS 13.0, *) {
+                contentView
+                    .dropDestination(for: URL.self) { items, location in
+                        Task {
+                            await alphaRemover.processImages(for: items)
                         }
+                        return true
                     }
-                    return true
-                }
+            } else {
+                contentView
+                    .onDrop(of: [.dropURLType], isTargeted: $isTargeted) { providers, _ in
+                        Task {
+                            do {
+                                try await alphaRemover.processImages(for: providers)
+                            } catch {
+                                print(error)
+                            }
+                        }
+                        return true
+                    }
+            }
+        }
+        .fileExporter(
+            isPresented: $alphaRemover.isShowingExporter,
+            documents: alphaRemover.documents,
+            contentType: .folder
+        ) { result in
+            switch result {
+            case let .success(urls):
+                print(urls)
+            case let .failure(error):
+                print(error)
+            }
         }
     }
 
     private var contentView: some View {
         VStack {
             if alphaRemover.imageURLs.isEmpty {
-                VStack {
+                VStack(spacing: 8) {
                     Image(systemName: "square.and.arrow.down")
                         .font(.largeTitle)
                     Text("Drop images here.")
@@ -55,20 +68,17 @@ struct AlphaRemoveView: View {
                             Spacer(minLength: 4)
                             if let imageResult = alphaRemover.images[url] {
                                 switch imageResult {
-                                case let .success(image):
-                                    Text("\(image.hasAlpha == true ? "true" : "false")")
-                                        .foregroundColor(image.hasAlpha ? .red : .green)
+                                case .success:
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.green)
                                 case .failure:
-                                    HStack {
-                                        Text("Error")
-                                        Image(systemName: "xmark.octagon")
-                                    }
-                                    .foregroundColor(.red)
-                                    .onTapGesture {
-                                        withAnimation {
-                                            alphaRemover.remove(imageURL: url)
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.red)
+                                        .onTapGesture {
+                                            withAnimation {
+                                                alphaRemover.remove(imageURL: url)
+                                            }
                                         }
-                                    }
                                 }
                             } else {
                                 ProgressView()

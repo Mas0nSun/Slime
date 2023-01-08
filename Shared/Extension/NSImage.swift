@@ -9,54 +9,83 @@ import AVKit
 
 extension NSImage {
     func resized(to newSize: NSSize, hasAlpha: Bool = true) async throws -> NSImage {
-        try await withCheckedThrowingContinuation { continuation in
-            guard isValid else {
-                fatalError("Image is not valid!")
-            }
-            guard let bitmapImageRep = NSBitmapImageRep(
-                bitmapDataPlanes: nil,
-                pixelsWide: Int(newSize.width),
-                pixelsHigh: Int(newSize.height),
-                bitsPerSample: 8,
-                samplesPerPixel: 4,
-                hasAlpha: true,
-                isPlanar: false,
-                colorSpaceName: .calibratedRGB,
-                bytesPerRow: 0,
-                bitsPerPixel: 0
-            ) else {
-                fatalError("Can not initialize NSBitmapImageRep!")
-            }
-            bitmapImageRep.size = newSize
-            NSGraphicsContext.saveGraphicsState()
-            NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapImageRep)
-            let rect = NSRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-            if !hasAlpha {
-                NSColor.white.drawSwatch(in: rect)
-                rect.fill()
-            }
-            draw(in: rect)
-            NSGraphicsContext.restoreGraphicsState()
-            let newImage = NSImage(size: newSize)
-            newImage.addRepresentation(bitmapImageRep)
-            continuation.resume(returning: newImage)
+        guard isValid else {
+            fatalError("Image is not valid!")
         }
+        guard let bitmapImageRep = NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: Int(newSize.width),
+            pixelsHigh: Int(newSize.height),
+            bitsPerSample: 8,
+            samplesPerPixel: 4,
+            hasAlpha: true,
+            isPlanar: false,
+            colorSpaceName: .calibratedRGB,
+            bytesPerRow: 0,
+            bitsPerPixel: 0
+        ) else {
+            fatalError("Can not initialize NSBitmapImageRep!")
+        }
+        bitmapImageRep.size = newSize
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapImageRep)
+        let rect = NSRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        if !hasAlpha {
+            NSColor.white.drawSwatch(in: rect)
+            rect.fill()
+        }
+        draw(in: rect)
+        NSGraphicsContext.restoreGraphicsState()
+        let newImage = NSImage(size: newSize)
+        newImage.addRepresentation(bitmapImageRep)
+        return newImage
     }
 
     func removedAlpha() async -> NSImage {
-        let result = NSImage(size: size)
-        result.lockFocus()
-        let rect = NSRect(origin: .zero, size: size)
+        guard let cgImage = cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+            fatalError("No CGImage!")
+        }
+        let bitmapImageRep = NSBitmapImageRep(cgImage: cgImage)
+        guard let newBitmapImageRep = NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: Int(bitmapImageRep.size.width),
+            pixelsHigh: Int(bitmapImageRep.size.height),
+            bitsPerSample: bitmapImageRep.bitsPerSample,
+            samplesPerPixel: bitmapImageRep.samplesPerPixel,
+            hasAlpha: bitmapImageRep.hasAlpha,
+            isPlanar: false,
+            colorSpaceName: bitmapImageRep.colorSpaceName,
+            bytesPerRow: bitmapImageRep.bytesPerRow,
+            bitsPerPixel: bitmapImageRep.bitsPerPixel
+        ) else {
+            fatalError("Can not initialize NSBitmapImageRep!")
+        }
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: newBitmapImageRep)
+        let rect = NSRect(
+            x: 0,
+            y: 0,
+            width: newBitmapImageRep.size.width,
+            height: newBitmapImageRep.size.height
+        )
         NSColor.white.drawSwatch(in: rect)
         rect.fill()
         draw(in: rect)
-        result.unlockFocus()
-        return result
+        NSGraphicsContext.restoreGraphicsState()
+        let newImage = NSImage(size: rect.size)
+        newImage.addRepresentation(newBitmapImageRep)
+        return newImage
     }
+}
 
-    var hasAlpha: Bool {
-        representations.contains {
-            $0.hasAlpha == true
+extension NSImage {
+    var pngData: Data? {
+        guard let data = tiffRepresentation,
+              let imageRep = NSBitmapImageRep(data: data),
+              let pngData = imageRep.representation(using: .png, properties: [:])
+        else {
+            return nil
         }
+        return pngData
     }
 }

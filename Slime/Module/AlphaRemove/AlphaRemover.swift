@@ -11,6 +11,7 @@ final class AlphaRemover: ObservableObject {
     static let shared = AlphaRemover()
     @Published private(set) var images: [URL: ImageResult] = [:]
     @Published private(set) var imageURLs: [URL] = []
+    @Published var isShowingExporter = false
 
     private init() { }
 
@@ -59,6 +60,32 @@ final class AlphaRemover: ObservableObject {
             return try await taskGroup.reduce(into: []) { $0.append($1) }
         }
         await processImages(for: urlAndData.map { $0.0 })
+    }
+
+    @objc func exportAssets() {
+        isShowingExporter = true
+    }
+
+    // TODO: Updated it when exported data changes
+    var canExport: Bool {
+        !images.values.isEmpty
+    }
+
+    var documents: [ImagesDocument] {
+        [
+            ImagesDocument(
+                images: imageURLs.compactMap { url -> (String, NSImage)? in
+                    guard let image = images[url] else {
+                        return nil
+                    }
+                    if case let .success(image) = image {
+                        return (url.lastPathComponent, image)
+                    } else {
+                        return nil
+                    }
+                }
+            )
+        ]
     }
 }
 

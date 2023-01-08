@@ -34,6 +34,10 @@
 		99BE95DB2747E68800F72A71 /* SlimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95DA2747E68800F72A71 /* SlimeUITests.swift */; };
 		99BE95DD2747E68800F72A71 /* SlimeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95DC2747E68800F72A71 /* SlimeUITestsLaunchTests.swift */; };
 		99C20155296AD9E3008EC1C1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C20154296AD9E3008EC1C1 /* String.swift */; };
+		99C20157296B0641008EC1C1 /* ImagesDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C20156296B0641008EC1C1 /* ImagesDocument.swift */; };
+		99C20159296B0BD7008EC1C1 /* AssetsMakerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C20158296B0BD7008EC1C1 /* AssetsMakerWindowController.swift */; };
+		99C2015B296B0BF2008EC1C1 /* AlphaRemoverWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C2015A296B0BF2008EC1C1 /* AlphaRemoverWindowController.swift */; };
+		99C2015D296B0C26008EC1C1 /* NSToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C2015C296B0C26008EC1C1 /* NSToolbarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +89,10 @@
 		99BE95DA2747E68800F72A71 /* SlimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeUITests.swift; sourceTree = "<group>"; };
 		99BE95DC2747E68800F72A71 /* SlimeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		99C20154296AD9E3008EC1C1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		99C20156296B0641008EC1C1 /* ImagesDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesDocument.swift; sourceTree = "<group>"; };
+		99C20158296B0BD7008EC1C1 /* AssetsMakerWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsMakerWindowController.swift; sourceTree = "<group>"; };
+		99C2015A296B0BF2008EC1C1 /* AlphaRemoverWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaRemoverWindowController.swift; sourceTree = "<group>"; };
+		99C2015C296B0C26008EC1C1 /* NSToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSToolbarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +161,7 @@
 				994DF229274901EC00BD306F /* AssetsMaker.swift */,
 				99BE95C02747E68500F72A71 /* AssetsSettingView.swift */,
 				998FDF63296884A40001783C /* AssetsMakeView.swift */,
+				99C20158296B0BD7008EC1C1 /* AssetsMakerWindowController.swift */,
 			);
 			path = AssetsMake;
 			sourceTree = "<group>";
@@ -162,6 +171,8 @@
 			children = (
 				998FDF652968855D0001783C /* AlphaRemoveView.swift */,
 				998FDF6B29696ABF0001783C /* AlphaRemover.swift */,
+				99C20156296B0641008EC1C1 /* ImagesDocument.swift */,
+				99C2015A296B0BF2008EC1C1 /* AlphaRemoverWindowController.swift */,
 			);
 			path = AlphaRemove;
 			sourceTree = "<group>";
@@ -190,6 +201,7 @@
 				99556E9C274EABD60019D303 /* CGFloat.swift */,
 				998FDF60296869A90001783C /* NSImage.swift */,
 				99C20154296AD9E3008EC1C1 /* String.swift */,
+				99C2015C296B0C26008EC1C1 /* NSToolbarItem.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -319,7 +331,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					99BE95BA2747E68500F72A71 = {
 						CreatedOnToolsVersion = 13.1;
@@ -391,17 +403,21 @@
 				994DF22A274901EC00BD306F /* AssetsMaker.swift in Sources */,
 				994DF225274900DB00BD306F /* AssetsPreviewView.swift in Sources */,
 				998FDF68296887320001783C /* AppDelegate.swift in Sources */,
+				99C2015B296B0BF2008EC1C1 /* AlphaRemoverWindowController.swift in Sources */,
 				99BE95C12747E68500F72A71 /* AssetsSettingView.swift in Sources */,
 				998FDF662968855D0001783C /* AlphaRemoveView.swift in Sources */,
+				99C2015D296B0C26008EC1C1 /* NSToolbarItem.swift in Sources */,
 				99BE95BF2747E68500F72A71 /* SlimeApp.swift in Sources */,
 				994DF21A2748E5FD00BD306F /* Optional.swift in Sources */,
 				994DF21D2748F4D100BD306F /* SystemPicker.swift in Sources */,
 				994DF2EF2749344F00BD306F /* AssetsDocument.swift in Sources */,
 				99556EA1274FC33A0019D303 /* AssetImageGroupView.swift in Sources */,
+				99C20159296B0BD7008EC1C1 /* AssetsMakerWindowController.swift in Sources */,
 				998FDF5C296865D20001783C /* Module.swift in Sources */,
 				998FDF6C29696ABF0001783C /* AlphaRemover.swift in Sources */,
 				99556EA3274FCB0B0019D303 /* AssetImageGroup.swift in Sources */,
 				994DF2232748FC2900BD306F /* ImageResizer.swift in Sources */,
+				99C20157296B0641008EC1C1 /* ImagesDocument.swift in Sources */,
 				998FDF64296884A40001783C /* AssetsMakeView.swift in Sources */,
 				99556E99274E9EA40019D303 /* View.swift in Sources */,
 				998FDF61296869A90001783C /* NSImage.swift in Sources */,
@@ -479,6 +495,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -540,6 +557,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -570,6 +588,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Slime/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TJ7K2DH6D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -601,6 +620,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Slime/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TJ7K2DH6D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -630,6 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4TJ7K2DH6D;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -655,6 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4TJ7K2DH6D;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -679,6 +701,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4TJ7K2DH6D;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -702,6 +725,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4TJ7K2DH6D;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
