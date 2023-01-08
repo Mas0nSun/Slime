@@ -8,7 +8,7 @@
 
 macOS 11.0 minimum
 
-### New Feature for 2.0.0
+### New Feature in 2.0.0
 - [x] Batch remove alpha channel for PNGs
 
 ### Features
