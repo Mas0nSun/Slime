@@ -8,6 +8,9 @@
 
 macOS 11.0 minimum
 
+### New Feature for 2.0.0
+- [x] Batch remove alpha channel for PNGs
+
 ### Features
 - [x] Export AppIcon.appiconset (Just drop the folder into xcode)
 - [x] Preview assets before export
