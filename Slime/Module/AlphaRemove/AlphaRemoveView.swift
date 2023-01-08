@@ -23,7 +23,7 @@ struct AlphaRemoveView: View {
                 }
         } else {
             contentView
-                .onDrop(of: ["public.file-url"], isTargeted: $isTargeted) { providers, _ in
+                .onDrop(of: [.dropURLType], isTargeted: $isTargeted) { providers, _ in
                     Task {
                         do {
                             try await alphaRemover.processImages(for: providers)
@@ -38,35 +38,49 @@ struct AlphaRemoveView: View {
 
     private var contentView: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-            VStack {
-                ForEach(alphaRemover.imageURLs, id: \.self) { url in
-                    HStack {
-                        Text(url.lastPathComponent)
-                        if let imageResult = alphaRemover.images[url] {
-                            switch imageResult {
-                            case let .success(image):
-                                Image(nsImage: image)
-                                    .resizable()
-                                    .frame(width: 40, height: 80)
-                                Text("\(image.size.width)")
-                                Text("\(image.hasAlpha == true ? "true" : "false")")
-                                    .foregroundColor(image.hasAlpha ? .red : .green)
-                            case .failure:
-                                Text("Failed")
+            if alphaRemover.imageURLs.isEmpty {
+                VStack {
+                    Image(systemName: "square.and.arrow.down")
+                        .font(.largeTitle)
+                    Text("Drop images here.")
+                }
+                .foregroundColor(.secondary)
+                .frame(width: 200, height: 200)
+                .dashBorderStyle()
+            } else {
+                List {
+                    ForEach(alphaRemover.imageURLs, id: \.self) { url in
+                        HStack(spacing: 0) {
+                            Text(url.lastPathComponent)
+                            Spacer(minLength: 4)
+                            if let imageResult = alphaRemover.images[url] {
+                                switch imageResult {
+                                case let .success(image):
+                                    Text("\(image.hasAlpha == true ? "true" : "false")")
+                                        .foregroundColor(image.hasAlpha ? .red : .green)
+                                case .failure:
+                                    HStack {
+                                        Text("Error")
+                                        Image(systemName: "xmark.octagon")
+                                    }
+                                    .foregroundColor(.red)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            alphaRemover.remove(imageURL: url)
+                                        }
+                                    }
+                                }
+                            } else {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
                             }
-                        } else {
-                            ProgressView()
-                                .progressViewStyle(.circular)
                         }
                     }
                 }
             }
         }
-        .frame(width: 400, height: 200)
+        .padding()
+        .frame(minWidth: 300, minHeight: 300)
     }
 }
 

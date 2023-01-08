@@ -33,6 +33,7 @@
 		99BE95D12747E68700F72A71 /* SlimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95D02747E68700F72A71 /* SlimeTests.swift */; };
 		99BE95DB2747E68800F72A71 /* SlimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95DA2747E68800F72A71 /* SlimeUITests.swift */; };
 		99BE95DD2747E68800F72A71 /* SlimeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95DC2747E68800F72A71 /* SlimeUITestsLaunchTests.swift */; };
+		99C20155296AD9E3008EC1C1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C20154296AD9E3008EC1C1 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		99BE95D62747E68800F72A71 /* SlimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BE95DA2747E68800F72A71 /* SlimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeUITests.swift; sourceTree = "<group>"; };
 		99BE95DC2747E68800F72A71 /* SlimeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		99C20154296AD9E3008EC1C1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				994DF2192748E5FD00BD306F /* Optional.swift */,
 				99556E9C274EABD60019D303 /* CGFloat.swift */,
 				998FDF60296869A90001783C /* NSImage.swift */,
+				99C20154296AD9E3008EC1C1 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				99556E99274E9EA40019D303 /* View.swift in Sources */,
 				998FDF61296869A90001783C /* NSImage.swift in Sources */,
 				99556E9D274EABD60019D303 /* CGFloat.swift in Sources */,
+				99C20155296AD9E3008EC1C1 /* String.swift in Sources */,
 				99556E18274E6A0D0019D303 /* AssetContent.swift in Sources */,
 				994DF2202748F4EA00BD306F /* SystemType.swift in Sources */,
 			);

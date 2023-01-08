@@ -14,6 +14,13 @@ final class AlphaRemover: ObservableObject {
 
     private init() { }
 
+    func remove(imageURL: URL) {
+        guard let index = imageURLs.firstIndex(of: imageURL) else {
+            return
+        }
+        imageURLs.remove(at: index)
+    }
+
     func processImages(for urls: [URL]) async {
         await MainActor.run {
             self.imageURLs = urls
@@ -39,7 +46,7 @@ final class AlphaRemover: ObservableObject {
             for provider in providers {
                 taskGroup.addTask {
                     let data = try await provider.loadItem(
-                        forTypeIdentifier: "public.file-url",
+                        forTypeIdentifier: .dropURLType,
                         options: nil
                     ) as! Data
                     let url = NSURL(

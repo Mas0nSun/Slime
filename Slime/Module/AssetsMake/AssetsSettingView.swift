@@ -21,14 +21,14 @@ struct AssetsSettingView: View {
             }
         }
         .padding()
-        .onDrop(of: ["public.file-url"], isTargeted: $isTargeted) { providers, _ in
+        .onDrop(of: [.dropURLType], isTargeted: $isTargeted) { providers, _ in
             guard let provider = providers.first else {
                 return false
             }
             Task {
                 do {
                     let urlData = try await provider.loadItem(
-                        forTypeIdentifier: "public.file-url",
+                        forTypeIdentifier: .dropURLType,
                         options: nil
                     )
                     guard let urlData = urlData as? Data else {
