@@ -1,5 +1,5 @@
 //
-//  AssetsStore.swift
+//  AssetsMaker.swift
 //  Slime
 //
 //  Created by Mason Sun on 2021/11/20.
@@ -7,10 +7,11 @@
 
 import AppKit
 import Foundation
+import Combine
 
 @MainActor
-class AssetsStore: ObservableObject {
-    static let shared = AssetsStore()
+final class AssetsMaker: ObservableObject {
+    static let shared = AssetsMaker()
     @Published var imageURL: URL? {
         didSet {
             cleanAssets()
@@ -21,10 +22,9 @@ class AssetsStore: ObservableObject {
     @Published var hasAlpha: Bool = true
     @Published private(set) var assetContents: [AssetContent] = []
     @Published private(set) var assets: [AssetContent.Image: NSImage] = [:]
-
+    @Published var isShowingExporter: Bool = false
     private let imageResizer = ImageResizer()
-
-    private init() {}
+    private var disposeBag: Set<AnyCancellable> = []
 
     func loadAssetContents() async {
         do {
@@ -55,5 +55,27 @@ class AssetsStore: ObservableObject {
 
     private func cleanAssets() {
         assets = [:]
+    }
+
+    // MARK: Export
+
+    @objc func exportAssets() {
+        isShowingExporter = true
+    }
+
+    // TODO: Updated it when exported data changes
+    var canExport: Bool {
+        !assets.isEmpty
+    }
+
+    var documents: [AssetsDocument] {
+        [
+            AssetsDocument(
+                assetContents: assetContents.filter {
+                    systemTypes.contains($0.system)
+                },
+                assets: assets
+            ),
+        ]
     }
 }

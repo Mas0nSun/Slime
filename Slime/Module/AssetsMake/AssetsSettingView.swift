@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AssetsSettingView.swift
 //  Slime
 //
 //  Created by Mason Sun on 2021/11/19.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @EnvironmentObject private var assetsStore: AssetsStore
+struct AssetsSettingView: View {
+    @EnvironmentObject private var assetsStore: AssetsMaker
     @State private var isTargeted = false
 
     var body: some View {
@@ -94,8 +94,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AssetsSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AssetsSettingView()
     }
 }

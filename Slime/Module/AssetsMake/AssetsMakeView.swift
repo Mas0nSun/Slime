@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct AssetsMakeView: View {
+    @EnvironmentObject private var assetsMaker: AssetsMaker
+
     var body: some View {
         HStack(spacing: 0) {
-            ContentView()
+            AssetsSettingView()
             AssetsPreviewView()
                 .frame(minWidth: 500)
         }
+        .environmentObject(assetsMaker)
         .onAppear {
             Task {
-                await AssetsStore.shared.loadAssetContents()
+                await assetsMaker.loadAssetContents()
             }
         }
     }

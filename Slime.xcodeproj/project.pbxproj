@@ -12,7 +12,7 @@
 		994DF2202748F4EA00BD306F /* SystemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF21F2748F4EA00BD306F /* SystemType.swift */; };
 		994DF2232748FC2900BD306F /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF2222748FC2900BD306F /* ImageResizer.swift */; };
 		994DF225274900DB00BD306F /* AssetsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF224274900DB00BD306F /* AssetsPreviewView.swift */; };
-		994DF22A274901EC00BD306F /* AssetsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF229274901EC00BD306F /* AssetsStore.swift */; };
+		994DF22A274901EC00BD306F /* AssetsMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF229274901EC00BD306F /* AssetsMaker.swift */; };
 		994DF2EF2749344F00BD306F /* AssetsDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DF2EE2749344F00BD306F /* AssetsDocument.swift */; };
 		99556E18274E6A0D0019D303 /* AssetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99556E17274E6A0D0019D303 /* AssetContent.swift */; };
 		99556E1A274E767D0019D303 /* AssetContents.json in Resources */ = {isa = PBXBuildFile; fileRef = 99556E19274E767D0019D303 /* AssetContents.json */; };
@@ -27,7 +27,7 @@
 		998FDF68296887320001783C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998FDF67296887320001783C /* AppDelegate.swift */; };
 		998FDF6C29696ABF0001783C /* AlphaRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998FDF6B29696ABF0001783C /* AlphaRemover.swift */; };
 		99BE95BF2747E68500F72A71 /* SlimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95BE2747E68500F72A71 /* SlimeApp.swift */; };
-		99BE95C12747E68500F72A71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95C02747E68500F72A71 /* ContentView.swift */; };
+		99BE95C12747E68500F72A71 /* AssetsSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95C02747E68500F72A71 /* AssetsSettingView.swift */; };
 		99BE95C32747E68700F72A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99BE95C22747E68700F72A71 /* Assets.xcassets */; };
 		99BE95C62747E68700F72A71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99BE95C52747E68700F72A71 /* Preview Assets.xcassets */; };
 		99BE95D12747E68700F72A71 /* SlimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE95D02747E68700F72A71 /* SlimeTests.swift */; };
@@ -58,7 +58,7 @@
 		994DF21F2748F4EA00BD306F /* SystemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemType.swift; sourceTree = "<group>"; };
 		994DF2222748FC2900BD306F /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		994DF224274900DB00BD306F /* AssetsPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsPreviewView.swift; sourceTree = "<group>"; };
-		994DF229274901EC00BD306F /* AssetsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsStore.swift; sourceTree = "<group>"; };
+		994DF229274901EC00BD306F /* AssetsMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsMaker.swift; sourceTree = "<group>"; };
 		994DF2EE2749344F00BD306F /* AssetsDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsDocument.swift; sourceTree = "<group>"; };
 		99556E17274E6A0D0019D303 /* AssetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetContent.swift; sourceTree = "<group>"; };
 		99556E19274E767D0019D303 /* AssetContents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetContents.json; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		998FDF6B29696ABF0001783C /* AlphaRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaRemover.swift; sourceTree = "<group>"; };
 		99BE95BB2747E68500F72A71 /* Slime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BE95BE2747E68500F72A71 /* SlimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeApp.swift; sourceTree = "<group>"; };
-		99BE95C02747E68500F72A71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		99BE95C02747E68500F72A71 /* AssetsSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsSettingView.swift; sourceTree = "<group>"; };
 		99BE95C22747E68700F72A71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99BE95C52747E68700F72A71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		99BE95C72747E68700F72A71 /* Slime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slime.entitlements; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 				994DF21E2748F4E000BD306F /* Model */,
 				994DF21B2748F4BC00BD306F /* View */,
 				994DF2222748FC2900BD306F /* ImageResizer.swift */,
-				994DF229274901EC00BD306F /* AssetsStore.swift */,
-				99BE95C02747E68500F72A71 /* ContentView.swift */,
+				994DF229274901EC00BD306F /* AssetsMaker.swift */,
+				99BE95C02747E68500F72A71 /* AssetsSettingView.swift */,
 				998FDF63296884A40001783C /* AssetsMakeView.swift */,
 			);
 			path = AssetsMake;
@@ -385,10 +385,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				994DF22A274901EC00BD306F /* AssetsStore.swift in Sources */,
+				994DF22A274901EC00BD306F /* AssetsMaker.swift in Sources */,
 				994DF225274900DB00BD306F /* AssetsPreviewView.swift in Sources */,
 				998FDF68296887320001783C /* AppDelegate.swift in Sources */,
-				99BE95C12747E68500F72A71 /* ContentView.swift in Sources */,
+				99BE95C12747E68500F72A71 /* AssetsSettingView.swift in Sources */,
 				998FDF662968855D0001783C /* AlphaRemoveView.swift in Sources */,
 				99BE95BF2747E68500F72A71 /* SlimeApp.swift in Sources */,
 				994DF21A2748E5FD00BD306F /* Optional.swift in Sources */,

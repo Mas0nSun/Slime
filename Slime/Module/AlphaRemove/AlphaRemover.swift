@@ -7,7 +7,7 @@
 
 import AppKit
 
-class AlphaRemover: ObservableObject {
+final class AlphaRemover: ObservableObject {
     static let shared = AlphaRemover()
     @Published private(set) var images: [URL: ImageResult] = [:]
     @Published private(set) var imageURLs: [URL] = []

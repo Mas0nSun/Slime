@@ -6,27 +6,28 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Module: String, CaseIterable {
     // Make icon assets
-    case assetsMake
+    case assetsMaker
     // Remove alpha for images
-    case alphaRemove
+    case alphaRemover
 
     var title: String {
         switch self {
-        case .assetsMake:
+        case .assetsMaker:
             return "Assets Maker"
-        case .alphaRemove:
-            return "No Alpha"
+        case .alphaRemover:
+            return "Alpha Remover"
         }
     }
 
     var symbol: String {
         switch self {
-        case .assetsMake:
+        case .assetsMaker:
             return "square.stack.3d.up.fill"
-        case .alphaRemove:
+        case .alphaRemover:
             return "eraser.fill"
         }
     }
