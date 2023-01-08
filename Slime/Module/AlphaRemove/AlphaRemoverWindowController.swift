@@ -19,7 +19,8 @@ class AlphaRemoverWindowController: NSWindowController {
         self.window?.toolbar = toolBar
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -29,7 +30,7 @@ class AlphaRemoverWindowController: NSWindowController {
 }
 
 extension AlphaRemoverWindowController: NSToolbarDelegate {
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+    func toolbarDefaultItemIdentifiers(_: NSToolbar) -> [NSToolbarItem.Identifier] {
         let identifiers: [NSToolbarItem.Identifier] = [.exportAssets]
         return identifiers
     }
@@ -39,9 +40,9 @@ extension AlphaRemoverWindowController: NSToolbarDelegate {
     }
 
     func toolbar(
-        _ toolbar: NSToolbar,
+        _: NSToolbar,
         itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-        willBeInsertedIntoToolbar flag: Bool
+        willBeInsertedIntoToolbar _: Bool
     ) -> NSToolbarItem? {
         var toolbarItem: NSToolbarItem?
         switch itemIdentifier {

@@ -15,7 +15,7 @@ struct AlphaRemoveView: View {
         Group {
             if #available(macOS 13.0, *) {
                 contentView
-                    .dropDestination(for: URL.self) { items, location in
+                    .dropDestination(for: URL.self) { items, _ in
                         Task {
                             await alphaRemover.processImages(for: items)
                         }

@@ -81,8 +81,8 @@ extension NSImage {
 extension NSImage {
     var pngData: Data? {
         guard let data = tiffRepresentation,
-              let imageRep = NSBitmapImageRep(data: data),
-              let pngData = imageRep.representation(using: .png, properties: [:])
+            let imageRep = NSBitmapImageRep(data: data),
+            let pngData = imageRep.representation(using: .png, properties: [:])
         else {
             return nil
         }

@@ -13,7 +13,7 @@ final class AlphaRemover: ObservableObject {
     @Published private(set) var imageURLs: [URL] = []
     @Published var isShowingExporter = false
 
-    private init() { }
+    private init() {}
 
     func remove(imageURL: URL) {
         guard let index = imageURLs.firstIndex(of: imageURL) else {
@@ -26,7 +26,7 @@ final class AlphaRemover: ObservableObject {
         await MainActor.run {
             self.imageURLs = urls
         }
-        urls.enumerated().forEach { index, url in
+        urls.enumerated().forEach { _, url in
             Task {
                 guard let image = NSImage(contentsOf: url) else {
                     await MainActor.run {
@@ -84,12 +84,12 @@ final class AlphaRemover: ObservableObject {
                         return nil
                     }
                 }
-            )
+            ),
         ]
     }
 }
 
-extension NSItemProvider: @unchecked Sendable { }
+extension NSItemProvider: @unchecked Sendable {}
 
 extension AlphaRemover {
     enum ImageResult {

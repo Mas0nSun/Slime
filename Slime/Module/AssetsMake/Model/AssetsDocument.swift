@@ -36,7 +36,7 @@ struct AssetsDocument: FileDocument {
             let images = assetContent.content.images
             images.forEach { image in
                 if let nsImage = assets[image],
-                   let pngData = nsImage.pngData
+                    let pngData = nsImage.pngData
                 {
                     // Add png to folder
                     fileWrappers[image.filename] = FileWrapper(regularFileWithContents: pngData)

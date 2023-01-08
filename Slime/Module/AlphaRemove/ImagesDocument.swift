@@ -23,7 +23,7 @@ struct ImagesDocument: FileDocument {
         images = []
     }
 
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+    func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
         var files: [String: FileWrapper] = [:]
         images.forEach { name, image in
             if let pngData = image.pngData {
